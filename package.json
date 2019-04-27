@@ -6,7 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": "https://github.com/daniilkorotin/tree-sitter-leaf",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daniilkorotin/tree-sitter-leaf.git"
+  },
   "author": "Daniil Korotin",
   "license": "MIT",
   "dependencies": {
@@ -14,5 +17,13 @@
   },
   "devDependencies": {
     "tree-sitter-cli": "^0.14.6"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/daniilkorotin/tree-sitter-leaf/issues"
+  },
+  "homepage": "https://github.com/daniilkorotin/tree-sitter-leaf#readme",
+  "keywords": [
+    "leaf",
+    "vapor"
+  ]
 }
