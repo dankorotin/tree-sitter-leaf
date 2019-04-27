@@ -26,11 +26,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "simple_tag_definition"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "tag_with_body_definition"
+          "name": "tag_definition"
         }
       ]
     },
@@ -47,20 +43,7 @@
         }
       ]
     },
-    "simple_tag_definition": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "name"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "parameter_list"
-        }
-      ]
-    },
-    "tag_with_body_definition": {
+    "tag_definition": {
       "type": "SEQ",
       "members": [
         {
@@ -72,8 +55,16 @@
           "name": "parameter_list"
         },
         {
-          "type": "SYMBOL",
-          "name": "body"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "body"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },

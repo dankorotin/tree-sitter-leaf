@@ -9,8 +9,7 @@ module.exports = grammar({
     _definition: $ => choice(
       $.junk_definition,
       $.variable_definition,
-      $.simple_tag_definition,
-      $.tag_with_body_definition
+      $.tag_definition
     ),
 
     junk_definition: $ => /[^#{}\s\n\t][^#{}]*/,
@@ -19,15 +18,10 @@ module.exports = grammar({
       $.variable
     ),
 
-    simple_tag_definition: $ => seq(
-      $.name,
-      $.parameter_list
-    ),
-
-    tag_with_body_definition: $ => seq(
+    tag_definition: $ => seq(
       $.name,
       $.parameter_list,
-      $.body
+      optional($.body)
     ),
 
     identifier: $ => /[a-zA-Z0-9_]+/,

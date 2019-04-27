@@ -21,7 +21,7 @@ Simple tag with context variable parameter
 ---
 
 (source_file
-  (simple_tag_definition
+  (tag_definition
     (name
       (identifier))
     (parameter_list
@@ -36,7 +36,7 @@ Simple tag with string variable parameter
 ---
 
 (source_file
-  (simple_tag_definition
+  (tag_definition
     (name
       (identifier))
     (parameter_list
@@ -54,7 +54,7 @@ Tag with variable body
 ---
 
 (source_file
-  (tag_with_body_definition
+  (tag_definition
     (name
       (identifier))
     (parameter_list
