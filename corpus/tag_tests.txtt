@@ -1,6 +1,6 @@
-==================
+===
 Variable
-==================
+===
 
 #(title)
 
@@ -12,9 +12,9 @@ Variable
       (parameter_list
         (identifier)))))
 
-==================
+===
 Simple tag
-==================
+===
 
 #count(users)
 
@@ -27,9 +27,9 @@ Simple tag
     (parameter_list
       (identifier))))
 
-==================
+===
 Tag with variable body
-==================
+===
 
 #if(title) {
   #(title)

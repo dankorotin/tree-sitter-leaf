@@ -4,13 +4,22 @@
     "source_file": {
       "type": "REPEAT",
       "content": {
-        "type": "SYMBOL",
-        "name": "_definition"
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "_definition"
+          }
+        ]
       }
     },
     "_definition": {
       "type": "CHOICE",
       "members": [
+        {
+          "type": "SYMBOL",
+          "name": "junk"
+        },
         {
           "type": "SYMBOL",
           "name": "variable_definition"
@@ -24,6 +33,10 @@
           "name": "tag_with_body_definition"
         }
       ]
+    },
+    "junk": {
+      "type": "PATTERN",
+      "value": "[^#{}\\s\\n\\t][^#]*"
     },
     "variable_definition": {
       "type": "SEQ",
@@ -63,6 +76,10 @@
           "name": "body"
         }
       ]
+    },
+    "identifier": {
+      "type": "PATTERN",
+      "value": "[a-z]+"
     },
     "variable": {
       "type": "SEQ",
@@ -138,10 +155,6 @@
         "type": "SYMBOL",
         "name": "_definition"
       }
-    },
-    "identifier": {
-      "type": "PATTERN",
-      "value": "[a-z]+"
     }
   },
   "extras": [

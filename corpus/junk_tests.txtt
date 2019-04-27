@@ -1,0 +1,46 @@
+===
+Junk around a tag
+===
+
+<!-- Some HTML comment -->
+#(title)
+<p>And some tags here</p>
+
+---
+
+(source_file
+  (junk_definition)
+  (variable_definition
+    (variable
+      (parameter_list
+        (identifier))))
+  (junk_definition))
+
+===
+Junk around and inside tags
+===
+
+<!-- Some HTML comment -->
+#if(title) {
+  <p>And some tags here</p>
+  #(title)
+}
+<h1>And here, too!</h1>
+
+---
+
+(source_file
+  (junk_definition)
+  (tag_with_body_definition
+    (tag_name
+      (identifier))
+    (parameter_list
+      (identifier))
+    (body
+      (definitions
+        (junk_definition)
+        (variable_definition
+          (variable
+            (parameter_list
+              (identifier)))))))
+  (junk_definition))
