@@ -43,9 +43,11 @@ module.exports = grammar({
 
     body: $ => seq(
       '{',
-       repeat($._definition),
+       optional($.definitions),
       '}'
     ),
+
+    definitions: $ => repeat1($._definition),
 
     identifier: $ => /[a-z]+/
   }

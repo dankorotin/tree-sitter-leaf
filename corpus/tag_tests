@@ -44,7 +44,8 @@ Tag with variable body
     (parameter_list
       (identifier))
     (body
-      (variable_definition
-        (variable
-          (parameter_list
-            (identifier)))))))
+      (definitions
+        (variable_definition
+          (variable
+            (parameter_list
+              (identifier))))))))
