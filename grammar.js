@@ -13,28 +13,40 @@ module.exports = grammar({
       $.tag_with_body_definition
     ),
 
-    junk_definition: $ => /[^#{}\s\n\t][^#]*/,
+    junk_definition: $ => /[^#{}\s\n\t][^#{}]*/,
 
     variable_definition: $ => seq(
       $.variable
     ),
 
     simple_tag_definition: $ => seq(
-      $.tag_name,
+      $.name,
       $.parameter_list
     ),
 
     tag_with_body_definition: $ => seq(
-      $.tag_name,
+      $.name,
       $.parameter_list,
       $.body
     ),
 
     identifier: $ => /[a-zA-Z0-9_]+/,
+
+    string: $ => /[^\"]*/,
+
+    string_parameter: $ => seq('"', $.string, '"'),
+
     variable: $ => seq('#', $.parameter_list),
-    tag_name: $ => seq('#', $.identifier),
-    parameter_list: $ => seq('(', $.identifier, ')'),
+
+    name: $ => seq('#', $.identifier),
+
+    parameter_list: $ => seq('(', choice(
+      $.identifier,
+      $.string_parameter
+    ), ')'),
+
     body: $ => seq('{', optional($.definitions), '}'),
+
     definitions: $ => repeat1($._definition),
   }
 });

@@ -32,7 +32,7 @@ Junk around and inside tags
 (source_file
   (junk_definition)
   (tag_with_body_definition
-    (tag_name
+    (name
       (identifier))
     (parameter_list
       (identifier))

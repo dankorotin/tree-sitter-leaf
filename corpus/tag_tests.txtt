@@ -13,7 +13,7 @@ Variable
         (identifier)))))
 
 ===
-Simple tag
+Simple tag with context variable parameter
 ===
 
 #count(users)
@@ -22,10 +22,26 @@ Simple tag
 
 (source_file
   (simple_tag_definition
-    (tag_name
+    (name
       (identifier))
     (parameter_list
       (identifier))))
+
+===
+Simple tag with string variable parameter
+===
+
+#embed("base")
+
+---
+
+(source_file
+  (simple_tag_definition
+    (name
+      (identifier))
+    (parameter_list
+      (string_parameter
+        (string)))))
 
 ===
 Tag with variable body
@@ -39,7 +55,7 @@ Tag with variable body
 
 (source_file
   (tag_with_body_definition
-    (tag_name
+    (name
       (identifier))
     (parameter_list
       (identifier))

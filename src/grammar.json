@@ -36,7 +36,7 @@
     },
     "junk_definition": {
       "type": "PATTERN",
-      "value": "[^#{}\\s\\n\\t][^#]*"
+      "value": "[^#{}\\s\\n\\t][^#{}]*"
     },
     "variable_definition": {
       "type": "SEQ",
@@ -52,7 +52,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "tag_name"
+          "name": "name"
         },
         {
           "type": "SYMBOL",
@@ -65,7 +65,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "tag_name"
+          "name": "name"
         },
         {
           "type": "SYMBOL",
@@ -81,6 +81,27 @@
       "type": "PATTERN",
       "value": "[a-zA-Z0-9_]+"
     },
+    "string": {
+      "type": "PATTERN",
+      "value": "[^\\\"]*"
+    },
+    "string_parameter": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "\""
+        },
+        {
+          "type": "SYMBOL",
+          "name": "string"
+        },
+        {
+          "type": "STRING",
+          "value": "\""
+        }
+      ]
+    },
     "variable": {
       "type": "SEQ",
       "members": [
@@ -94,7 +115,7 @@
         }
       ]
     },
-    "tag_name": {
+    "name": {
       "type": "SEQ",
       "members": [
         {
@@ -115,8 +136,17 @@
           "value": "("
         },
         {
-          "type": "SYMBOL",
-          "name": "identifier"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "identifier"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "string_parameter"
+            }
+          ]
         },
         {
           "type": "STRING",
