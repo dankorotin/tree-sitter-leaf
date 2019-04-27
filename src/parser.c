@@ -14,7 +14,7 @@
 #define MAX_ALIAS_SEQUENCE_LENGTH 3
 
 enum {
-  sym_junk = 1,
+  sym_junk_definition = 1,
   sym_identifier = 2,
   anon_sym_POUND = 3,
   anon_sym_LPAREN = 4,
@@ -37,7 +37,7 @@ enum {
 
 static const char *ts_symbol_names[] = {
   [ts_builtin_sym_end] = "end",
-  [sym_junk] = "junk",
+  [sym_junk_definition] = "junk_definition",
   [sym_identifier] = "identifier",
   [anon_sym_POUND] = "#",
   [anon_sym_LPAREN] = "(",
@@ -63,7 +63,7 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = false,
     .named = true,
   },
-  [sym_junk] = {
+  [sym_junk_definition] = {
     .visible = true,
     .named = true,
   },
@@ -162,7 +162,10 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead == '\r' ||
           lookahead == ' ')
         SKIP(0);
-      if (('a' <= lookahead && lookahead <= 'z'))
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'Z') ||
+          lookahead == '_' ||
+          ('a' <= lookahead && lookahead <= 'z'))
         ADVANCE(7);
       END_STATE();
     case 1:
@@ -185,7 +188,10 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       END_STATE();
     case 7:
       ACCEPT_TOKEN(sym_identifier);
-      if (('a' <= lookahead && lookahead <= 'z'))
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'Z') ||
+          lookahead == '_' ||
+          ('a' <= lookahead && lookahead <= 'z'))
         ADVANCE(7);
       END_STATE();
     case 8:
@@ -206,7 +212,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
         ADVANCE(9);
       END_STATE();
     case 9:
-      ACCEPT_TOKEN(sym_junk);
+      ACCEPT_TOKEN(sym_junk_definition);
       if (lookahead != 0 &&
           lookahead != '#')
         ADVANCE(9);
@@ -219,7 +225,10 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead == '\r' ||
           lookahead == ' ')
         SKIP(10);
-      if (('a' <= lookahead && lookahead <= 'z'))
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'Z') ||
+          lookahead == '_' ||
+          ('a' <= lookahead && lookahead <= 'z'))
         ADVANCE(7);
       END_STATE();
     case 11:
@@ -279,7 +288,7 @@ static uint16_t ts_parse_table[STATE_COUNT][SYMBOL_COUNT] = {
     [sym_tag_name] = STATE(6),
     [sym__definition] = STATE(3),
     [sym_variable_definition] = STATE(3),
-    [sym_junk] = ACTIONS(3),
+    [sym_junk_definition] = ACTIONS(3),
     [ts_builtin_sym_end] = ACTIONS(5),
     [anon_sym_POUND] = ACTIONS(7),
   },
@@ -296,7 +305,7 @@ static uint16_t ts_parse_table[STATE_COUNT][SYMBOL_COUNT] = {
     [sym_variable_definition] = STATE(10),
     [aux_sym_source_file_repeat1] = STATE(10),
     [sym_variable] = STATE(5),
-    [sym_junk] = ACTIONS(13),
+    [sym_junk_definition] = ACTIONS(13),
     [ts_builtin_sym_end] = ACTIONS(15),
     [anon_sym_POUND] = ACTIONS(7),
   },
@@ -306,7 +315,7 @@ static uint16_t ts_parse_table[STATE_COUNT][SYMBOL_COUNT] = {
   [5] = {
     [ts_builtin_sym_end] = ACTIONS(19),
     [anon_sym_RBRACE] = ACTIONS(19),
-    [sym_junk] = ACTIONS(19),
+    [sym_junk_definition] = ACTIONS(19),
     [anon_sym_POUND] = ACTIONS(19),
   },
   [6] = {
@@ -322,7 +331,7 @@ static uint16_t ts_parse_table[STATE_COUNT][SYMBOL_COUNT] = {
   [9] = {
     [ts_builtin_sym_end] = ACTIONS(25),
     [anon_sym_RBRACE] = ACTIONS(25),
-    [sym_junk] = ACTIONS(25),
+    [sym_junk_definition] = ACTIONS(25),
     [anon_sym_POUND] = ACTIONS(25),
   },
   [10] = {
@@ -333,7 +342,7 @@ static uint16_t ts_parse_table[STATE_COUNT][SYMBOL_COUNT] = {
     [sym_variable_definition] = STATE(10),
     [aux_sym_source_file_repeat1] = STATE(10),
     [sym_variable] = STATE(5),
-    [sym_junk] = ACTIONS(27),
+    [sym_junk_definition] = ACTIONS(27),
     [anon_sym_POUND] = ACTIONS(30),
     [ts_builtin_sym_end] = ACTIONS(33),
   },
@@ -341,7 +350,7 @@ static uint16_t ts_parse_table[STATE_COUNT][SYMBOL_COUNT] = {
     [sym_body] = STATE(14),
     [ts_builtin_sym_end] = ACTIONS(35),
     [anon_sym_RBRACE] = ACTIONS(35),
-    [sym_junk] = ACTIONS(35),
+    [sym_junk_definition] = ACTIONS(35),
     [anon_sym_LBRACE] = ACTIONS(37),
     [anon_sym_POUND] = ACTIONS(35),
   },
@@ -357,27 +366,27 @@ static uint16_t ts_parse_table[STATE_COUNT][SYMBOL_COUNT] = {
     [aux_sym_definitions_repeat1] = STATE(18),
     [sym__definition] = STATE(18),
     [sym_variable_definition] = STATE(18),
-    [sym_junk] = ACTIONS(41),
+    [sym_junk_definition] = ACTIONS(41),
     [anon_sym_POUND] = ACTIONS(7),
     [anon_sym_RBRACE] = ACTIONS(43),
   },
   [14] = {
     [ts_builtin_sym_end] = ACTIONS(45),
     [anon_sym_RBRACE] = ACTIONS(45),
-    [sym_junk] = ACTIONS(45),
+    [sym_junk_definition] = ACTIONS(45),
     [anon_sym_POUND] = ACTIONS(45),
   },
   [15] = {
     [ts_builtin_sym_end] = ACTIONS(47),
     [anon_sym_RBRACE] = ACTIONS(47),
-    [sym_junk] = ACTIONS(47),
+    [sym_junk_definition] = ACTIONS(47),
     [anon_sym_LBRACE] = ACTIONS(47),
     [anon_sym_POUND] = ACTIONS(47),
   },
   [16] = {
     [ts_builtin_sym_end] = ACTIONS(49),
     [anon_sym_RBRACE] = ACTIONS(49),
-    [sym_junk] = ACTIONS(49),
+    [sym_junk_definition] = ACTIONS(49),
     [anon_sym_POUND] = ACTIONS(49),
   },
   [17] = {
@@ -391,14 +400,14 @@ static uint16_t ts_parse_table[STATE_COUNT][SYMBOL_COUNT] = {
     [sym_variable_definition] = STATE(20),
     [aux_sym_definitions_repeat1] = STATE(20),
     [sym_variable] = STATE(5),
-    [sym_junk] = ACTIONS(53),
+    [sym_junk_definition] = ACTIONS(53),
     [anon_sym_RBRACE] = ACTIONS(55),
     [anon_sym_POUND] = ACTIONS(7),
   },
   [19] = {
     [ts_builtin_sym_end] = ACTIONS(57),
     [anon_sym_RBRACE] = ACTIONS(57),
-    [sym_junk] = ACTIONS(57),
+    [sym_junk_definition] = ACTIONS(57),
     [anon_sym_POUND] = ACTIONS(57),
   },
   [20] = {
@@ -409,7 +418,7 @@ static uint16_t ts_parse_table[STATE_COUNT][SYMBOL_COUNT] = {
     [sym_variable_definition] = STATE(20),
     [aux_sym_definitions_repeat1] = STATE(20),
     [sym_variable] = STATE(5),
-    [sym_junk] = ACTIONS(59),
+    [sym_junk_definition] = ACTIONS(59),
     [anon_sym_POUND] = ACTIONS(62),
     [anon_sym_RBRACE] = ACTIONS(65),
   },

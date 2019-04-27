@@ -30,7 +30,7 @@ module.exports = grammar({
       $.body
     ),
 
-    identifier: $ => /[a-z]+/,
+    identifier: $ => /[a-zA-Z0-9_]+/,
     variable: $ => seq('#', $.parameter_list),
     tag_name: $ => seq('#', $.identifier),
     parameter_list: $ => seq('(', $.identifier, ')'),

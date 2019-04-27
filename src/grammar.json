@@ -18,7 +18,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "junk"
+          "name": "junk_definition"
         },
         {
           "type": "SYMBOL",
@@ -34,7 +34,7 @@
         }
       ]
     },
-    "junk": {
+    "junk_definition": {
       "type": "PATTERN",
       "value": "[^#{}\\s\\n\\t][^#]*"
     },
@@ -79,7 +79,7 @@
     },
     "identifier": {
       "type": "PATTERN",
-      "value": "[a-z]+"
+      "value": "[a-zA-Z0-9_]+"
     },
     "variable": {
       "type": "SEQ",
