@@ -81,3 +81,25 @@ Tag with text body
     (body
       (definitions
         (junk_definition)))))
+
+===
+Tag with identifiers and operators
+===
+
+#if(1 + 2 = 3) { Correct! }
+
+---
+
+(source_file
+  (tag_definition
+    (name
+      (identifier))
+    (parameter_list
+      (identifier)
+      (operator_parameter)
+      (identifier)
+      (operator_parameter)
+      (identifier))
+    (body
+      (definitions
+        (junk_definition)))))

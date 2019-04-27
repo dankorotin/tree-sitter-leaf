@@ -26,11 +26,14 @@ module.exports = grammar({
 
     string_parameter: $ => seq('"', $.string, '"'),
 
+    operator_parameter: $ => /[+\-=\*/|!]+?/,
+
     name: $ => $.identifier,
 
     parameter_list: $ => seq('(', choice(
       $.identifier,
-      $.string_parameter
+      $.string_parameter,
+      $.operator_parameter
     ), ')'),
 
     body: $ => seq('{', optional($.definitions), '}'),
