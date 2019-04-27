@@ -65,3 +65,21 @@ Tag with variable body
           (variable
             (parameter_list
               (identifier))))))))
+
+===
+Tag with text body
+===
+
+#set(title) { Hello world! }
+
+---
+
+(source_file
+  (tag_definition
+    (name
+      (identifier))
+    (parameter_list
+      (identifier))
+    (body
+      (definitions
+        (junk_definition)))))
