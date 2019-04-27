@@ -1,0 +1,18 @@
+{
+  "name": "tree-sitter-leaf",
+  "version": "0.0.1",
+  "description": "Leaf templating language parser",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "https://github.com/daniilkorotin/tree-sitter-leaf",
+  "author": "Daniil Korotin",
+  "license": "MIT",
+  "dependencies": {
+    "nan": "^2.13.2"
+  },
+  "devDependencies": {
+    "tree-sitter-cli": "^0.14.6"
+  }
+}
