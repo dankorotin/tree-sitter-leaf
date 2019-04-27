@@ -1,5 +1,5 @@
 ===
-Variable
+Variable (no-name tag)
 ===
 
 #(title)
@@ -7,10 +7,9 @@ Variable
 ---
 
 (source_file
-  (variable_definition
-    (variable
-      (parameter_list
-        (identifier)))))
+  (tag_definition
+    (parameter_list
+      (identifier))))
 
 ===
 Simple tag with context variable parameter
@@ -61,10 +60,9 @@ Tag with variable body
       (identifier))
     (body
       (definitions
-        (variable_definition
-          (variable
-            (parameter_list
-              (identifier))))))))
+        (tag_definition
+          (parameter_list
+            (identifier)))))))
 
 ===
 Tag with text body

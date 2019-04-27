@@ -10,10 +10,9 @@ Junk around a tag
 
 (source_file
   (junk_definition)
-  (variable_definition
-    (variable
-      (parameter_list
-        (identifier))))
+  (tag_definition
+    (parameter_list
+      (identifier)))
   (junk_definition))
 
 ===
@@ -39,8 +38,7 @@ Junk around and inside tags
     (body
       (definitions
         (junk_definition)
-        (variable_definition
-          (variable
-            (parameter_list
-              (identifier)))))))
+        (tag_definition
+          (parameter_list
+            (identifier))))))
   (junk_definition))

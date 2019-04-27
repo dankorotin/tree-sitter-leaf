@@ -8,18 +8,14 @@ module.exports = grammar({
 
     _definition: $ => choice(
       $.junk_definition,
-      $.variable_definition,
       $.tag_definition
     ),
 
     junk_definition: $ => /[^#{}\s\n\t][^#{}]*/,
 
-    variable_definition: $ => seq(
-      $.variable
-    ),
-
     tag_definition: $ => seq(
-      $.name,
+      '#',
+      optional($.name),
       $.parameter_list,
       optional($.body)
     ),
@@ -30,9 +26,7 @@ module.exports = grammar({
 
     string_parameter: $ => seq('"', $.string, '"'),
 
-    variable: $ => seq('#', $.parameter_list),
-
-    name: $ => seq('#', $.identifier),
+    name: $ => $.identifier,
 
     parameter_list: $ => seq('(', choice(
       $.identifier,
