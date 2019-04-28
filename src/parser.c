@@ -14,7 +14,7 @@
 #define MAX_ALIAS_SEQUENCE_LENGTH 4
 
 enum {
-  sym_raw_text_definition = 1,
+  sym_raw_text = 1,
   anon_sym_POUND = 2,
   sym_identifier = 3,
   sym_string = 4,
@@ -28,7 +28,7 @@ enum {
   anon_sym_RBRACE = 12,
   sym_source_file = 13,
   sym__definition = 14,
-  sym_tag_definition = 15,
+  sym_tag = 15,
   sym_string_parameter = 16,
   sym_operator_parameter = 17,
   sym_name = 18,
@@ -41,7 +41,7 @@ enum {
 
 static const char *ts_symbol_names[] = {
   [ts_builtin_sym_end] = "end",
-  [sym_raw_text_definition] = "raw_text_definition",
+  [sym_raw_text] = "raw_text",
   [anon_sym_POUND] = "#",
   [sym_identifier] = "identifier",
   [sym_string] = "string",
@@ -55,7 +55,7 @@ static const char *ts_symbol_names[] = {
   [anon_sym_RBRACE] = "}",
   [sym_source_file] = "source_file",
   [sym__definition] = "_definition",
-  [sym_tag_definition] = "tag_definition",
+  [sym_tag] = "tag",
   [sym_string_parameter] = "string_parameter",
   [sym_operator_parameter] = "operator_parameter",
   [sym_name] = "name",
@@ -71,7 +71,7 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = false,
     .named = true,
   },
-  [sym_raw_text_definition] = {
+  [sym_raw_text] = {
     .visible = true,
     .named = true,
   },
@@ -127,7 +127,7 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = false,
     .named = true,
   },
-  [sym_tag_definition] = {
+  [sym_tag] = {
     .visible = true,
     .named = true,
   },
@@ -289,7 +289,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
         ADVANCE(14);
       END_STATE();
     case 14:
-      ACCEPT_TOKEN(sym_raw_text_definition);
+      ACCEPT_TOKEN(sym_raw_text);
       if (lookahead != 0 &&
           lookahead != '#' &&
           lookahead != '{' &&
@@ -424,10 +424,10 @@ static uint16_t ts_parse_table[STATE_COUNT][SYMBOL_COUNT] = {
   },
   [1] = {
     [aux_sym_source_file_repeat1] = STATE(3),
-    [sym_tag_definition] = STATE(3),
+    [sym_tag] = STATE(3),
     [sym__definition] = STATE(3),
     [sym_source_file] = STATE(4),
-    [sym_raw_text_definition] = ACTIONS(3),
+    [sym_raw_text] = ACTIONS(3),
     [anon_sym_POUND] = ACTIONS(5),
     [ts_builtin_sym_end] = ACTIONS(7),
   },
@@ -438,10 +438,10 @@ static uint16_t ts_parse_table[STATE_COUNT][SYMBOL_COUNT] = {
     [sym_identifier] = ACTIONS(11),
   },
   [3] = {
-    [sym_tag_definition] = STATE(9),
+    [sym_tag] = STATE(9),
     [sym__definition] = STATE(9),
     [aux_sym_source_file_repeat1] = STATE(9),
-    [sym_raw_text_definition] = ACTIONS(13),
+    [sym_raw_text] = ACTIONS(13),
     [anon_sym_POUND] = ACTIONS(5),
     [ts_builtin_sym_end] = ACTIONS(15),
   },
@@ -463,7 +463,7 @@ static uint16_t ts_parse_table[STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_POUND] = ACTIONS(27),
     [ts_builtin_sym_end] = ACTIONS(27),
     [anon_sym_RBRACE] = ACTIONS(27),
-    [sym_raw_text_definition] = ACTIONS(27),
+    [sym_raw_text] = ACTIONS(27),
     [anon_sym_LBRACE] = ACTIONS(29),
   },
   [8] = {
@@ -471,10 +471,10 @@ static uint16_t ts_parse_table[STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_LPAREN] = ACTIONS(9),
   },
   [9] = {
-    [sym_tag_definition] = STATE(9),
+    [sym_tag] = STATE(9),
     [sym__definition] = STATE(9),
     [aux_sym_source_file_repeat1] = STATE(9),
-    [sym_raw_text_definition] = ACTIONS(31),
+    [sym_raw_text] = ACTIONS(31),
     [anon_sym_POUND] = ACTIONS(34),
     [ts_builtin_sym_end] = ACTIONS(37),
   },
@@ -485,7 +485,7 @@ static uint16_t ts_parse_table[STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_POUND] = ACTIONS(41),
     [ts_builtin_sym_end] = ACTIONS(41),
     [anon_sym_RBRACE] = ACTIONS(41),
-    [sym_raw_text_definition] = ACTIONS(41),
+    [sym_raw_text] = ACTIONS(41),
     [anon_sym_LBRACE] = ACTIONS(41),
   },
   [12] = {
@@ -501,10 +501,10 @@ static uint16_t ts_parse_table[STATE_COUNT][SYMBOL_COUNT] = {
   },
   [14] = {
     [sym__definition] = STATE(22),
-    [sym_tag_definition] = STATE(22),
+    [sym_tag] = STATE(22),
     [aux_sym_definitions_repeat1] = STATE(22),
     [sym_definitions] = STATE(23),
-    [sym_raw_text_definition] = ACTIONS(53),
+    [sym_raw_text] = ACTIONS(53),
     [anon_sym_POUND] = ACTIONS(5),
     [anon_sym_RBRACE] = ACTIONS(55),
   },
@@ -512,14 +512,14 @@ static uint16_t ts_parse_table[STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_POUND] = ACTIONS(57),
     [ts_builtin_sym_end] = ACTIONS(57),
     [anon_sym_RBRACE] = ACTIONS(57),
-    [sym_raw_text_definition] = ACTIONS(57),
+    [sym_raw_text] = ACTIONS(57),
   },
   [16] = {
     [sym_body] = STATE(24),
     [anon_sym_POUND] = ACTIONS(57),
     [ts_builtin_sym_end] = ACTIONS(57),
     [anon_sym_RBRACE] = ACTIONS(57),
-    [sym_raw_text_definition] = ACTIONS(57),
+    [sym_raw_text] = ACTIONS(57),
     [anon_sym_LBRACE] = ACTIONS(29),
   },
   [17] = {
@@ -537,20 +537,20 @@ static uint16_t ts_parse_table[STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_POUND] = ACTIONS(63),
     [ts_builtin_sym_end] = ACTIONS(63),
     [anon_sym_RBRACE] = ACTIONS(63),
-    [sym_raw_text_definition] = ACTIONS(63),
+    [sym_raw_text] = ACTIONS(63),
     [anon_sym_LBRACE] = ACTIONS(63),
   },
   [21] = {
     [anon_sym_POUND] = ACTIONS(65),
     [ts_builtin_sym_end] = ACTIONS(65),
     [anon_sym_RBRACE] = ACTIONS(65),
-    [sym_raw_text_definition] = ACTIONS(65),
+    [sym_raw_text] = ACTIONS(65),
   },
   [22] = {
-    [sym_tag_definition] = STATE(27),
+    [sym_tag] = STATE(27),
     [aux_sym_definitions_repeat1] = STATE(27),
     [sym__definition] = STATE(27),
-    [sym_raw_text_definition] = ACTIONS(67),
+    [sym_raw_text] = ACTIONS(67),
     [anon_sym_POUND] = ACTIONS(5),
     [anon_sym_RBRACE] = ACTIONS(69),
   },
@@ -561,7 +561,7 @@ static uint16_t ts_parse_table[STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_POUND] = ACTIONS(73),
     [ts_builtin_sym_end] = ACTIONS(73),
     [anon_sym_RBRACE] = ACTIONS(73),
-    [sym_raw_text_definition] = ACTIONS(73),
+    [sym_raw_text] = ACTIONS(73),
   },
   [25] = {
     [anon_sym_RPAREN] = ACTIONS(75),
@@ -570,10 +570,10 @@ static uint16_t ts_parse_table[STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_RPAREN] = ACTIONS(77),
   },
   [27] = {
-    [sym_tag_definition] = STATE(27),
+    [sym_tag] = STATE(27),
     [aux_sym_definitions_repeat1] = STATE(27),
     [sym__definition] = STATE(27),
-    [sym_raw_text_definition] = ACTIONS(79),
+    [sym_raw_text] = ACTIONS(79),
     [anon_sym_POUND] = ACTIONS(82),
     [anon_sym_RBRACE] = ACTIONS(85),
   },
@@ -581,7 +581,7 @@ static uint16_t ts_parse_table[STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_POUND] = ACTIONS(87),
     [ts_builtin_sym_end] = ACTIONS(87),
     [anon_sym_RBRACE] = ACTIONS(87),
-    [sym_raw_text_definition] = ACTIONS(87),
+    [sym_raw_text] = ACTIONS(87),
   },
 };
 
@@ -600,7 +600,7 @@ static TSParseActionEntry ts_parse_actions[] = {
   [21] = {.count = 1, .reusable = true}, SHIFT(11),
   [23] = {.count = 1, .reusable = true}, SHIFT(12),
   [25] = {.count = 1, .reusable = true}, REDUCE(sym_name, 1),
-  [27] = {.count = 1, .reusable = true}, REDUCE(sym_tag_definition, 2),
+  [27] = {.count = 1, .reusable = true}, REDUCE(sym_tag, 2),
   [29] = {.count = 1, .reusable = true}, SHIFT(14),
   [31] = {.count = 2, .reusable = true}, REDUCE(aux_sym_source_file_repeat1, 2), SHIFT_REPEAT(9),
   [34] = {.count = 2, .reusable = true}, REDUCE(aux_sym_source_file_repeat1, 2), SHIFT_REPEAT(2),
@@ -614,7 +614,7 @@ static TSParseActionEntry ts_parse_actions[] = {
   [51] = {.count = 1, .reusable = true}, SHIFT(20),
   [53] = {.count = 1, .reusable = true}, SHIFT(22),
   [55] = {.count = 1, .reusable = true}, SHIFT(21),
-  [57] = {.count = 1, .reusable = true}, REDUCE(sym_tag_definition, 3),
+  [57] = {.count = 1, .reusable = true}, REDUCE(sym_tag, 3),
   [59] = {.count = 1, .reusable = true}, SHIFT(25),
   [61] = {.count = 1, .reusable = true}, REDUCE(sym_operator_parameter, 2),
   [63] = {.count = 1, .reusable = true}, REDUCE(sym_parameter_list, 3),
@@ -622,7 +622,7 @@ static TSParseActionEntry ts_parse_actions[] = {
   [67] = {.count = 1, .reusable = true}, SHIFT(27),
   [69] = {.count = 1, .reusable = true}, REDUCE(sym_definitions, 1),
   [71] = {.count = 1, .reusable = true}, SHIFT(28),
-  [73] = {.count = 1, .reusable = true}, REDUCE(sym_tag_definition, 4),
+  [73] = {.count = 1, .reusable = true}, REDUCE(sym_tag, 4),
   [75] = {.count = 1, .reusable = true}, REDUCE(sym_string_parameter, 3),
   [77] = {.count = 1, .reusable = true}, REDUCE(sym_operator_parameter, 3),
   [79] = {.count = 2, .reusable = true}, REDUCE(aux_sym_definitions_repeat1, 2), SHIFT_REPEAT(27),

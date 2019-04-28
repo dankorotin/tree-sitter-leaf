@@ -9,12 +9,12 @@ Raw text around a tag
 ---
 
 (source_file
-  (raw_text_definition)
-  (tag_definition
+  (raw_text)
+  (tag
     (parameter_list
       (operator_parameter
         (identifier))))
-  (raw_text_definition))
+  (raw_text))
 
 ===
 Raw text around and inside tags
@@ -30,8 +30,8 @@ Raw text around and inside tags
 ---
 
 (source_file
-  (raw_text_definition)
-  (tag_definition
+  (raw_text)
+  (tag
     (name
         (identifier))
     (parameter_list
@@ -39,9 +39,9 @@ Raw text around and inside tags
         (identifier)))
     (body
       (definitions
-        (raw_text_definition)
-        (tag_definition
+        (raw_text)
+        (tag
           (parameter_list
             (operator_parameter
               (identifier)))))))
-  (raw_text_definition))
+  (raw_text))

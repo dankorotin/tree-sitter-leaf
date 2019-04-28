@@ -7,7 +7,7 @@ Empty tag
 ---
 
 (source_file
-  (tag_definition
+  (tag
     (parameter_list)))
 
 ===
@@ -19,7 +19,7 @@ Variable (no-name tag)
 ---
 
 (source_file
-  (tag_definition
+  (tag
     (parameter_list
       (operator_parameter
         (identifier)))))
@@ -33,7 +33,7 @@ Simple tag with context variable parameter
 ---
 
 (source_file
-  (tag_definition
+  (tag
     (name
       (identifier))
     (parameter_list
@@ -49,7 +49,7 @@ Simple tag with string variable parameter
 ---
 
 (source_file
-  (tag_definition
+  (tag
     (name
       (identifier))
     (parameter_list
@@ -67,7 +67,7 @@ Tag with variable body
 ---
 
 (source_file
-  (tag_definition
+  (tag
     (name
       (identifier))
     (parameter_list
@@ -75,7 +75,7 @@ Tag with variable body
         (identifier)))
     (body
       (definitions
-        (tag_definition
+        (tag
           (parameter_list
             (operator_parameter
               (identifier))))))))
@@ -89,7 +89,7 @@ Tag with text body
 ---
 
 (source_file
-  (tag_definition
+  (tag
     (name
       (identifier))
     (parameter_list
@@ -97,7 +97,7 @@ Tag with text body
         (identifier)))
     (body
       (definitions
-        (raw_text_definition)))))
+        (raw_text)))))
 
 ===
 For loop
@@ -108,7 +108,7 @@ For loop
 ---
 
 (source_file
-  (tag_definition
+  (tag
     (name
       (identifier))
     (parameter_list
@@ -118,7 +118,7 @@ For loop
           (identifier))))
     (body
       (definitions
-        (raw_text_definition)))))
+        (raw_text)))))
 
 ===
 Multi-operator expressions
@@ -130,7 +130,7 @@ Multi-operator expressions
 ---
 
 (source_file
-  (tag_definition
+  (tag
     (name
       (identifier))
     (parameter_list
@@ -140,8 +140,8 @@ Multi-operator expressions
           (identifier))))
     (body
       (definitions
-        (raw_text_definition))))
-  (tag_definition
+        (raw_text))))
+  (tag
     (name
       (identifier))
     (parameter_list
@@ -153,7 +153,7 @@ Multi-operator expressions
             (identifier)))))
     (body
       (definitions
-        (raw_text_definition)))))
+        (raw_text)))))
 
 ===
 Dot notation
@@ -164,7 +164,7 @@ Dot notation
 ---
 
 (source_file
-  (tag_definition
+  (tag
     (name
       (identifier))
     (parameter_list
@@ -174,4 +174,4 @@ Dot notation
           (identifier))))
     (body
       (definitions
-        (raw_text_definition)))))
+        (raw_text)))))

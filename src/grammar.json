@@ -18,19 +18,19 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "raw_text_definition"
+          "name": "raw_text"
         },
         {
           "type": "SYMBOL",
-          "name": "tag_definition"
+          "name": "tag"
         }
       ]
     },
-    "raw_text_definition": {
+    "raw_text": {
       "type": "PATTERN",
       "value": "[^#{}\\s\\n\\t][^#{}]*"
     },
-    "tag_definition": {
+    "tag": {
       "type": "SEQ",
       "members": [
         {
