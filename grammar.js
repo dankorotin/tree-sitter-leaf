@@ -26,15 +26,21 @@ module.exports = grammar({
 
     string_parameter: $ => seq('"', $.string, '"'),
 
-    operator_parameter: $ => /^(\+|\-|\*|\/|=|>|<|\&|\||%|\!|\^)$/,
+    operator_parameter: $ => seq(
+      $.identifier,
+      optional(choice(
+        'in',
+        /[\+|-|\*|/|=|>|<|&|\||%|!|\^]+/,
+        '.'
+      )),
+      optional($.operator_parameter)),
 
     name: $ => $.identifier,
 
-    parameter_list: $ => seq('(', choice(
-      $.identifier,
+    parameter_list: $ => seq('(', optional(choice(
       $.string_parameter,
       $.operator_parameter
-    ), ')'),
+    )), ')'),
 
     body: $ => seq('{', optional($.definitions), '}'),
 

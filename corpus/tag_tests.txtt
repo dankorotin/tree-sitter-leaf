@@ -1,4 +1,16 @@
 ===
+Empty tag
+===
+
+#()
+
+---
+
+(source_file
+  (tag_definition
+    (parameter_list)))
+
+===
 Variable (no-name tag)
 ===
 
@@ -9,7 +21,8 @@ Variable (no-name tag)
 (source_file
   (tag_definition
     (parameter_list
-      (identifier))))
+      (operator_parameter
+        (identifier)))))
 
 ===
 Simple tag with context variable parameter
@@ -24,7 +37,8 @@ Simple tag with context variable parameter
     (name
       (identifier))
     (parameter_list
-      (identifier))))
+      (operator_parameter
+        (identifier)))))
 
 ===
 Simple tag with string variable parameter
@@ -57,12 +71,14 @@ Tag with variable body
     (name
       (identifier))
     (parameter_list
-      (identifier))
+      (operator_parameter
+        (identifier)))
     (body
       (definitions
         (tag_definition
           (parameter_list
-            (identifier)))))))
+            (operator_parameter
+              (identifier))))))))
 
 ===
 Tag with text body
@@ -77,16 +93,17 @@ Tag with text body
     (name
       (identifier))
     (parameter_list
-      (identifier))
+      (operator_parameter
+        (identifier)))
     (body
       (definitions
         (junk_definition)))))
 
 ===
-Tag with identifiers and operators
+For loop
 ===
 
-#if(1 + 2 = 3) { Correct! }
+#for(foo in bar) { Hello world! }
 
 ---
 
@@ -95,11 +112,66 @@ Tag with identifiers and operators
     (name
       (identifier))
     (parameter_list
-      (identifier)
-      (operator_parameter)
-      (identifier)
-      (operator_parameter)
+      (operator_parameter
+        (identifier)
+        (operator_parameter
+          (identifier))))
+    (body
+      (definitions
+        (junk_definition)))))
+
+===
+Multi-operator expressions
+===
+
+#if(1 <= 2) { Hello world! }
+#if(1 + 2 == 3) { Hello world! }
+
+---
+
+(source_file
+  (tag_definition
+    (name
       (identifier))
+    (parameter_list
+      (operator_parameter
+        (identifier)
+        (operator_parameter
+          (identifier))))
+    (body
+      (definitions
+        (junk_definition))))
+  (tag_definition
+    (name
+      (identifier))
+    (parameter_list
+      (operator_parameter
+        (identifier)
+        (operator_parameter
+          (identifier)
+          (operator_parameter
+            (identifier)))))
+    (body
+      (definitions
+        (junk_definition)))))
+
+===
+Dot notation
+===
+
+#if(foo.bar) { Wubba lubba dub-dub! }
+
+---
+
+(source_file
+  (tag_definition
+    (name
+      (identifier))
+    (parameter_list
+      (operator_parameter
+        (identifier)
+        (operator_parameter
+          (identifier))))
     (body
       (definitions
         (junk_definition)))))

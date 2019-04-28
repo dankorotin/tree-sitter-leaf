@@ -12,7 +12,8 @@ Junk around a tag
   (junk_definition)
   (tag_definition
     (parameter_list
-      (identifier)))
+      (operator_parameter
+        (identifier))))
   (junk_definition))
 
 ===
@@ -32,13 +33,15 @@ Junk around and inside tags
   (junk_definition)
   (tag_definition
     (name
-      (identifier))
+        (identifier))
     (parameter_list
-      (identifier))
+      (operator_parameter
+        (identifier)))
     (body
       (definitions
         (junk_definition)
         (tag_definition
           (parameter_list
-            (identifier))))))
+            (operator_parameter
+              (identifier)))))))
   (junk_definition))
