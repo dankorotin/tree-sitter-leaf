@@ -1,0 +1,21 @@
+#set("content") {
+  <h1>#(title)</h1>
+
+  #if(someVar) {
+    <div class="foo">
+      Hello, world!
+    </div>
+  }
+
+  #for(foo in foos) {
+    <p>#(foo.bar)</p>
+  }
+
+  #if(1 + 2 == 3) { Magnifique! }
+
+  #if(someString = "YOLO!") {
+    <b>#(someString)</b>
+  }
+}
+
+#embed("base")

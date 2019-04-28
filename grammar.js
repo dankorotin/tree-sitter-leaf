@@ -29,6 +29,7 @@ module.exports = grammar({
     operator_parameter: $ => seq(
       $.identifier,
       optional(choice(
+        // TODO: Make 'in' and '.' variables for additional styling options?
         'in',
         /[\+|-|\*|/|=|>|<|&|\||%|!|\^]+/,
         '.'
