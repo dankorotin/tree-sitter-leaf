@@ -26,7 +26,7 @@ module.exports = grammar({
 
     string_parameter: $ => seq('"', $.string, '"'),
 
-    operator_parameter: $ => /[+\-=\*/|!]+?/,
+    operator_parameter: $ => /^(\+|\-|\*|\/|=|>|<|\&|\||%|\!|\^)$/,
 
     name: $ => $.identifier,
 

@@ -94,7 +94,7 @@
     },
     "operator_parameter": {
       "type": "PATTERN",
-      "value": "[+\\-=\\*\\/|!]+?"
+      "value": "^(\\+|\\-|\\*|\\/|=|>|<|\\&|\\||%|\\!|\\^)$"
     },
     "name": {
       "type": "SYMBOL",
