@@ -18,4 +18,8 @@
   }
 }
 
+<div class="basic">
+  Raw HTML here.
+</div>
+
 #embed("base")

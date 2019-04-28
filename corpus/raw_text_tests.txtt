@@ -1,5 +1,5 @@
 ===
-Junk around a tag
+Raw text around a tag
 ===
 
 <!-- Some HTML comment -->
@@ -9,15 +9,15 @@ Junk around a tag
 ---
 
 (source_file
-  (junk_definition)
+  (raw_text_definition)
   (tag_definition
     (parameter_list
       (operator_parameter
         (identifier))))
-  (junk_definition))
+  (raw_text_definition))
 
 ===
-Junk around and inside tags
+Raw text around and inside tags
 ===
 
 <!-- Some HTML comment -->
@@ -30,7 +30,7 @@ Junk around and inside tags
 ---
 
 (source_file
-  (junk_definition)
+  (raw_text_definition)
   (tag_definition
     (name
         (identifier))
@@ -39,9 +39,9 @@ Junk around and inside tags
         (identifier)))
     (body
       (definitions
-        (junk_definition)
+        (raw_text_definition)
         (tag_definition
           (parameter_list
             (operator_parameter
               (identifier)))))))
-  (junk_definition))
+  (raw_text_definition))

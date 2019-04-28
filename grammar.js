@@ -7,11 +7,11 @@ module.exports = grammar({
     )),
 
     _definition: $ => choice(
-      $.junk_definition,
+      $.raw_text_definition,
       $.tag_definition
     ),
 
-    junk_definition: $ => /[^#{}\s\n\t][^#{}]*/,
+    raw_text_definition: $ => /[^#{}\s\n\t][^#{}]*/,
 
     tag_definition: $ => seq(
       '#',

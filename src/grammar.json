@@ -18,7 +18,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "junk_definition"
+          "name": "raw_text_definition"
         },
         {
           "type": "SYMBOL",
@@ -26,7 +26,7 @@
         }
       ]
     },
-    "junk_definition": {
+    "raw_text_definition": {
       "type": "PATTERN",
       "value": "[^#{}\\s\\n\\t][^#{}]*"
     },
