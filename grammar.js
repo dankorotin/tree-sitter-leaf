@@ -2,19 +2,20 @@ module.exports = grammar({
   name: 'leaf',
 
   rules: {
-    source_file: $ => repeat(choice(
-      $._definition
-    )),
+    source_file: $ => repeat(
+      choice(
+        $._definition
+      )),
 
     _definition: $ => choice(
       $.raw_text,
       $.tag
     ),
 
-    raw_text: $ => /[^#{}\s\n\t][^#{}]*/,
+    raw_text: $ => /[^#\s{}][^#{}]*/,
 
     tag: $ => seq(
-      '#',
+      choice('#', '##'),
       optional($.name),
       $.parameter_list,
       optional($.body)
@@ -31,20 +32,36 @@ module.exports = grammar({
       optional(choice(
         // TODO: Make 'in' and '.' variables for additional styling options?
         'in',
-        /[\+|-|\*|/|=|>|<|&|\||%|!|\^]+/,
+        /[\+|-|\*|/|=|>|<|&|\||%|!]+/,
         '.'
       )),
       optional($.operator_parameter)),
 
     name: $ => $.identifier,
 
-    parameter_list: $ => seq('(', optional(choice(
-      $.string_parameter,
-      $.operator_parameter
-    )), ')'),
+    parameter_list: $ => seq(
+      '(',
+      optional(choice(
+        $.string_parameter,
+        $.operator_parameter
+      )),
+      ')'
+    ),
 
-    body: $ => seq('{', optional($.definitions), '}'),
+    body: $ => seq(
+      '{',
+      optional($.definitions),
+      choice(
+        '}',
+        seq('}', $.else)
+      )
+    ),
 
     definitions: $ => repeat1($._definition),
+
+    else: $ => seq(
+      'else' + ' ',
+      $.body
+    )
   }
 });

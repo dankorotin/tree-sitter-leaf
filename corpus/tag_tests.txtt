@@ -175,3 +175,32 @@ Dot notation
     (body
       (definitions
         (raw_text)))))
+
+===
+If with else
+===
+
+#if(foo.bar) {
+  Wubba lubba dub-dub!
+} else {
+  Squanch!
+}
+
+---
+
+(source_file
+  (tag
+    (name
+      (identifier))
+    (parameter_list
+      (operator_parameter
+        (identifier)
+        (operator_parameter
+          (identifier))))
+    (body
+      (definitions
+        (raw_text))
+      (else
+        (body
+          (definitions
+            (raw_text)))))))

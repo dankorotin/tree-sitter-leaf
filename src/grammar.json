@@ -28,14 +28,23 @@
     },
     "raw_text": {
       "type": "PATTERN",
-      "value": "[^#{}\\s\\n\\t][^#{}]*"
+      "value": "[^#\\s{}][^#{}]*"
     },
     "tag": {
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "#"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "#"
+            },
+            {
+              "type": "STRING",
+              "value": "##"
+            }
+          ]
         },
         {
           "type": "CHOICE",
@@ -111,7 +120,7 @@
                 },
                 {
                   "type": "PATTERN",
-                  "value": "[\\+|-|\\*|\\/|=|>|<|&|\\||%|!|\\^]+"
+                  "value": "[\\+|-|\\*|\\/|=|>|<|&|\\||%|!]+"
                 },
                 {
                   "type": "STRING",
@@ -196,8 +205,26 @@
           ]
         },
         {
-          "type": "STRING",
-          "value": "}"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "}"
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "}"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "else"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -207,6 +234,19 @@
         "type": "SYMBOL",
         "name": "_definition"
       }
+    },
+    "else": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "else "
+        },
+        {
+          "type": "SYMBOL",
+          "name": "body"
+        }
+      ]
     }
   },
   "extras": [
