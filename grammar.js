@@ -22,29 +22,26 @@ module.exports = grammar({
     ),
 
     identifier: $ => /[a-zA-Z0-9_]+/,
-
     string: $ => /[^\"]*/,
-
     string_parameter: $ => seq('"', $.string, '"'),
-
-    operator_parameter: $ => seq(
-      $.identifier,
-      optional(choice(
-        // TODO: Make 'in' and '.' variables for additional styling options?
-        'in',
-        /[\+|-|\*|/|=|>|<|&|\||%|!]+/,
-        '.'
-      )),
-      optional($.operator_parameter)),
-
     name: $ => $.identifier,
 
     parameter_list: $ => seq(
       '(',
-      optional(choice(
-        $.string_parameter,
-        $.operator_parameter
-      )),
+      optional(
+        repeat1(
+          choice(
+            $.string_parameter,
+            $.identifier,
+            choice(
+              // TODO: Make 'in' and '.' variables for additional styling options?
+              'in',
+              /[\+|-|\*|/|=|>|<|&|\||%|!]+/,
+              '.'
+            ),
+          )
+        )
+      ),
       ')'
     ),
 

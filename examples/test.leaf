@@ -13,7 +13,7 @@
 
   #if(1 + 2 == 3) { Magnifique! }
 
-  #if(someString = "YOLO!") {
+  #if(someString == "YOLO!") {
     <b>#(someString)</b>
   } else if (true) {
     #cast(spell)

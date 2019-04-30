@@ -21,8 +21,7 @@ Variable (no-name tag)
 (source_file
   (tag
     (parameter_list
-      (operator_parameter
-        (identifier)))))
+      (identifier))))
 
 ===
 Simple tag with context variable parameter
@@ -37,8 +36,7 @@ Simple tag with context variable parameter
     (name
       (identifier))
     (parameter_list
-      (operator_parameter
-        (identifier)))))
+      (identifier))))
 
 ===
 Simple tag with string variable parameter
@@ -71,14 +69,12 @@ Tag with variable body
     (name
       (identifier))
     (parameter_list
-      (operator_parameter
-        (identifier)))
+      (identifier))
     (body
       (definitions
         (tag
           (parameter_list
-            (operator_parameter
-              (identifier))))))))
+            (identifier)))))))
 
 ===
 Tag with text body
@@ -93,8 +89,7 @@ Tag with text body
     (name
       (identifier))
     (parameter_list
-      (operator_parameter
-        (identifier)))
+      (identifier))
     (body
       (definitions
         (raw_text)))))
@@ -112,10 +107,8 @@ For loop
     (name
       (identifier))
     (parameter_list
-      (operator_parameter
-        (identifier)
-        (operator_parameter
-          (identifier))))
+      (identifier)
+      (identifier))
     (body
       (definitions
         (raw_text)))))
@@ -126,6 +119,7 @@ Multi-operator expressions
 
 #if(1 <= 2) { Hello world! }
 #if(1 + 2 == 3) { Hello world! }
+#if(someString == "YOLO!") { Hello world! }
 
 ---
 
@@ -134,10 +128,8 @@ Multi-operator expressions
     (name
       (identifier))
     (parameter_list
-      (operator_parameter
-        (identifier)
-        (operator_parameter
-          (identifier))))
+      (identifier)
+      (identifier))
     (body
       (definitions
         (raw_text))))
@@ -145,12 +137,19 @@ Multi-operator expressions
     (name
       (identifier))
     (parameter_list
-      (operator_parameter
         (identifier)
-        (operator_parameter
-          (identifier)
-          (operator_parameter
-            (identifier)))))
+        (identifier)
+        (identifier))
+    (body
+      (definitions
+        (raw_text))))
+  (tag
+    (name
+      (identifier))
+    (parameter_list
+      (identifier)
+      (string_parameter
+        (string)))
     (body
       (definitions
         (raw_text)))))
@@ -168,10 +167,8 @@ Dot notation
     (name
       (identifier))
     (parameter_list
-      (operator_parameter
-        (identifier)
-        (operator_parameter
-          (identifier))))
+      (identifier)
+      (identifier))
     (body
       (definitions
         (raw_text)))))
@@ -195,10 +192,8 @@ If with else
     (name
       (identifier))
     (parameter_list
-      (operator_parameter
-        (identifier)
-        (operator_parameter
-          (identifier))))
+      (identifier)
+      (identifier))
     (body
       (definitions
         (raw_text))

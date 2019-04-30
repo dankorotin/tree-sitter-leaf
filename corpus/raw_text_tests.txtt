@@ -12,8 +12,7 @@ Raw text around a tag
   (raw_text)
   (tag
     (parameter_list
-      (operator_parameter
-        (identifier))))
+      (identifier)))
   (raw_text))
 
 ===
@@ -35,13 +34,11 @@ Raw text around and inside tags
     (name
         (identifier))
     (parameter_list
-      (operator_parameter
-        (identifier)))
+      (identifier))
     (body
       (definitions
         (raw_text)
         (tag
           (parameter_list
-            (operator_parameter
-              (identifier)))))))
+            (identifier))))))
   (raw_text))
