@@ -207,3 +207,27 @@ If with else
             (body
               (definitions
                 (raw_text)))))))))
+
+===
+If with comments
+===
+
+#/* Some rather stupid
+multiline comments */
+#if(true) {
+  #// Nothing to do here
+}
+
+---
+
+(source_file
+  (comment)
+  (tag
+    (name
+      (identifier))
+    (parameter_list
+      (identifier))
+    (body
+      (definitions
+        (comment
+          (raw_text))))))

@@ -9,10 +9,16 @@ module.exports = grammar({
 
     _definition: $ => choice(
       $.raw_text,
+      $.comment,
       $.tag
     ),
 
     raw_text: $ => /[^#{}()\s][^#{}()]*/,
+
+    comment: $ => choice(
+      seq('#//', $.raw_text),
+      seq('#/*', /[\w\'\s\r\n\*]*\*\//)
+    ),
 
     tag: $ => seq(
       choice('#', '##'),

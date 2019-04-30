@@ -22,6 +22,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "comment"
+        },
+        {
+          "type": "SYMBOL",
           "name": "tag"
         }
       ]
@@ -29,6 +33,37 @@
     "raw_text": {
       "type": "PATTERN",
       "value": "[^#{}()\\s][^#{}()]*"
+    },
+    "comment": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "#//"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "raw_text"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "#/*"
+            },
+            {
+              "type": "PATTERN",
+              "value": "[\\w\\'\\s\\r\\n\\*]*\\*\\/"
+            }
+          ]
+        }
+      ]
     },
     "tag": {
       "type": "SEQ",
