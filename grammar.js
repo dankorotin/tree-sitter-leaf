@@ -59,9 +59,7 @@ module.exports = grammar({
 
     else_if: $ => seq(
       'else if ', // TODO: Use regex?
-      '(',
-      optional($.identifier),
-      ')',
+      $.parameter_list,
       $.body
     ),
 

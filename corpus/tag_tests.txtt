@@ -179,7 +179,7 @@ If with else
 
 #if(foo.bar) {
   Wubba lubba dub-dub!
-} else if () {
+} else if (false) {
   Not true!
 } else {
   Squanch!
@@ -198,6 +198,8 @@ If with else
       (definitions
         (raw_text))
       (else_if
+        (parameter_list
+          (identifier))
         (body
           (definitions
             (raw_text))
