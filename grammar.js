@@ -12,7 +12,7 @@ module.exports = grammar({
       $.tag
     ),
 
-    raw_text: $ => /[^#\s{}][^#{}]*/,
+    raw_text: $ => /[^#{}()\s][^#{}()]*/,
 
     tag: $ => seq(
       choice('#', '##'),
@@ -53,14 +53,23 @@ module.exports = grammar({
       optional($.definitions),
       choice(
         '}',
+        seq('}', $.else_if),
         seq('}', $.else)
       )
     ),
 
     definitions: $ => repeat1($._definition),
 
+    else_if: $ => seq(
+      'else if ', // TODO: Use regex?
+      '(',
+      optional($.identifier),
+      ')',
+      $.body
+    ),
+
     else: $ => seq(
-      'else' + ' ',
+      'else' + ' ', // TODO: Use regex?
       $.body
     )
   }

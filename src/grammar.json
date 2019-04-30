@@ -28,7 +28,7 @@
     },
     "raw_text": {
       "type": "PATTERN",
-      "value": "[^#\\s{}][^#{}]*"
+      "value": "[^#{}()\\s][^#{}()]*"
     },
     "tag": {
       "type": "SEQ",
@@ -220,6 +220,19 @@
                 },
                 {
                   "type": "SYMBOL",
+                  "name": "else_if"
+                }
+              ]
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "}"
+                },
+                {
+                  "type": "SYMBOL",
                   "name": "else"
                 }
               ]
@@ -234,6 +247,39 @@
         "type": "SYMBOL",
         "name": "_definition"
       }
+    },
+    "else_if": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "else if "
+        },
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "identifier"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "body"
+        }
+      ]
     },
     "else": {
       "type": "SEQ",
