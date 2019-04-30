@@ -15,6 +15,10 @@
 
   #if(someString = "YOLO!") {
     <b>#(someString)</b>
+  } else if (true) {
+    #cast(spell)
+  } else {
+    #// Do nothing
   }
 }
 
