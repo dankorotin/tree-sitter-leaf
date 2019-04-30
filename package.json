@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-leaf",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Leaf templating language parser",
   "main": "index.js",
   "scripts": {
