@@ -1,0 +1,47 @@
+===
+Code sample
+===
+
+#/* Some rather stupid
+  multiline comments */
+  #if(someString == "YOLO!") {
+    <b>#(someString)</b>
+  } else if (true) {
+    #cast(spell)
+  } else {
+    #// Do nothing
+  }
+}
+
+<div class="foo" id="foo">
+  Raw HTML here.
+</div>
+
+<script type="text/javascript">
+  document.getElementById("foo").innerHTML = "Hello JavaScript!";
+</script>
+
+<style>
+  body {background-color: powderblue;}
+  h1   {color: blue;}
+  p    {color: red;}
+</style>
+
+#embed("base")
+
+---
+
+(source_file
+  (comment)
+  (tag
+    (name
+      (identifier))
+    (parameter_list
+      (identifier))
+    (body
+      (definitions
+        (comment
+          (raw_text))
+          (raw_text)
+          (raw_text)
+          (raw_text)))))

@@ -32,7 +32,7 @@
     },
     "raw_text": {
       "type": "PATTERN",
-      "value": "[^#\\s][^#\\s]*"
+      "value": "[^#\\n\\t\\s][^#\\n]*"
     },
     "comment": {
       "type": "CHOICE",
