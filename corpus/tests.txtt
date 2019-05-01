@@ -54,9 +54,7 @@ Tag with tags and raw text
             (identifier))
           (body
             (definitions
-              (raw_text)
-              (raw_text)
-              (raw_text))))
+              (html))))
         (tag
           (name
             (identifier))
@@ -136,9 +134,7 @@ HTML with tag inside
       (identifier))
     (body
       (definitions
-        (raw_text)
-        (raw_text)
-        (raw_text))))
+        (html))))
   (raw_text))
 
 ===
@@ -152,9 +148,7 @@ JS
 ---
 
 (source_file
-  (raw_text)
-  (raw_text)
-  (raw_text))
+  (html))
 
 ===
 CSS

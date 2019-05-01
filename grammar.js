@@ -10,7 +10,8 @@ module.exports = grammar({
     _definition: $ => choice(
       $.raw_text,
       $.comment,
-      $.tag
+      $.tag,
+      $.html
     ),
 
     raw_text: $ => /[^#\n\t\s][^#\n]*/,
@@ -31,6 +32,7 @@ module.exports = grammar({
     string: $ => /[^\"]*/,
     string_parameter: $ => seq('"', $.string, '"'),
     name: $ => $.identifier,
+    html: $ => /[<][^#{}]*[>]/,
 
     parameter_list: $ => seq(
       '(',
@@ -57,17 +59,6 @@ module.exports = grammar({
       '}'
     ),
 
-    definitions: $ => repeat1($._definition),
-
-    else_if: $ => seq(
-      'else if ', // TODO: Use regex?
-      $.parameter_list,
-      $.body
-    ),
-
-    else: $ => seq(
-      'else' + ' ', // TODO: Use regex?
-      $.body
-    )
+    definitions: $ => repeat1($._definition)
   }
 });
