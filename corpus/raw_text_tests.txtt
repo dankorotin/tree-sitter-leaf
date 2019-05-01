@@ -10,9 +10,16 @@ Raw text around a tag
 
 (source_file
   (raw_text)
+  (raw_text)
+  (raw_text)
+  (raw_text)
+  (raw_text)
   (tag
     (parameter_list
       (identifier)))
+  (raw_text)
+  (raw_text)
+  (raw_text)
   (raw_text))
 
 ===
@@ -30,6 +37,10 @@ Raw text around and inside tags
 
 (source_file
   (raw_text)
+  (raw_text)
+  (raw_text)
+  (raw_text)
+  (raw_text)
   (tag
     (name
         (identifier))
@@ -38,7 +49,12 @@ Raw text around and inside tags
     (body
       (definitions
         (raw_text)
+        (raw_text)
+        (raw_text)
+        (raw_text)
         (tag
           (parameter_list
             (identifier))))))
+  (raw_text)
+  (raw_text)
   (raw_text))

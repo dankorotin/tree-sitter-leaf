@@ -13,7 +13,7 @@ module.exports = grammar({
       $.tag
     ),
 
-    raw_text: $ => /[^#{}()\s][^#{}()]*/,
+    raw_text: $ => /[^#\s][^#\s]*/,
 
     comment: $ => choice(
       seq('#//', $.raw_text),

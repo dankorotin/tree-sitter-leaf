@@ -92,6 +92,7 @@ Tag with text body
       (identifier))
     (body
       (definitions
+        (raw_text)
         (raw_text)))))
 
 ===
@@ -111,6 +112,7 @@ For loop
       (identifier))
     (body
       (definitions
+        (raw_text)
         (raw_text)))))
 
 ===
@@ -132,6 +134,7 @@ Multi-operator expressions
       (identifier))
     (body
       (definitions
+        (raw_text)
         (raw_text))))
   (tag
     (name
@@ -142,6 +145,7 @@ Multi-operator expressions
         (identifier))
     (body
       (definitions
+        (raw_text)
         (raw_text))))
   (tag
     (name
@@ -152,6 +156,7 @@ Multi-operator expressions
         (string)))
     (body
       (definitions
+        (raw_text)
         (raw_text)))))
 
 ===
@@ -171,6 +176,8 @@ Dot notation
       (identifier))
     (body
       (definitions
+        (raw_text)
+        (raw_text)
         (raw_text)))))
 
 ===
@@ -196,12 +203,15 @@ If with else
       (identifier))
     (body
       (definitions
+        (raw_text)
+        (raw_text)
         (raw_text))
       (else_if
         (parameter_list
           (identifier))
         (body
           (definitions
+            (raw_text)
             (raw_text))
           (else
             (body
@@ -230,4 +240,7 @@ multiline comments */
     (body
       (definitions
         (comment
-          (raw_text))))))
+          (raw_text))
+          (raw_text)
+          (raw_text)
+          (raw_text)))))
