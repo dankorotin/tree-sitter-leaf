@@ -1,9 +1,25 @@
 ===
-Code sample
+Tag with tags and raw text
 ===
 
-#/* Some rather stupid
-  multiline comments */
+#set("content") {
+  <h1>#(title)</h1>
+
+  #if(someVar) {
+    <div class="foo">
+      Hello, world!
+    </div>
+  }
+
+  #for(foo in foos) {
+    <p>#(foo.bar)</p>
+  }
+
+  #if(1 + 2 == 3) { Magnifique! }
+
+  #/* Some
+  multiline
+  comments */
   #if(someString == "YOLO!") {
     <b>#(someString)</b>
   } else if (true) {
@@ -13,26 +29,106 @@ Code sample
   }
 }
 
-<div class="foo" id="foo">
-  Raw HTML here.
-</div>
-
-<script type="text/javascript">
-  document.getElementById("foo").innerHTML = "Hello JavaScript!";
-</script>
-
-<style>
-  body {background-color: powderblue;}
-  h1   {color: blue;}
-  p    {color: red;}
-</style>
-
 #embed("base")
 
 ---
 
 (source_file
-  (comment)
+  (tag
+    (name
+      (identifier))
+    (parameter_list
+      (string_parameter
+        (string)))
+    (body
+      (definitions
+        (raw_text)
+        (tag
+          (parameter_list
+            (identifier)))
+        (raw_text)
+        (tag
+          (name
+            (identifier))
+          (parameter_list
+            (identifier))
+          (body
+            (definitions
+              (raw_text)
+              (raw_text)
+              (raw_text))))
+        (tag
+          (name
+            (identifier))
+          (parameter_list
+            (identifier)
+            (identifier))
+          (body
+            (definitions
+              (raw_text)
+              (tag
+                (parameter_list
+                  (identifier)
+                  (identifier)))
+              (raw_text))))
+        (tag
+          (name
+            (identifier))
+            (parameter_list
+              (identifier)
+              (identifier)
+              (identifier)))
+        (raw_text)
+        (comment)
+        (tag
+          (name
+            (identifier))
+          (parameter_list
+            (identifier)
+            (string_parameter
+              (string)))
+          (body
+            (definitions
+              (raw_text)
+              (tag
+                (parameter_list
+                  (identifier)))
+              (raw_text)
+              (raw_text)
+              (tag
+                (name
+                  (identifier))
+                (parameter_list
+                  (identifier)))
+              (raw_text)
+              (comment
+                (raw_text))))))))
+  (tag
+    (name
+      (identifier))
+    (parameter_list
+      (string_parameter
+        (string)))))
+
+===
+HTML with tag inside
+===
+
+<div class="foo" id="foo">
+  Raw text here.
+
+  #if(someVar) {
+    <div class="foo">
+      Hello, world!
+    </div>
+  }
+</div>
+
+---
+
+(source_file
+  (raw_text)
+  (raw_text)
   (tag
     (name
       (identifier))
@@ -40,8 +136,41 @@ Code sample
       (identifier))
     (body
       (definitions
-        (comment
-          (raw_text))
-          (raw_text)
-          (raw_text)
-          (raw_text)))))
+        (raw_text)
+        (raw_text)
+        (raw_text))))
+  (raw_text))
+
+===
+JS
+===
+
+<script type="text/javascript">
+  document.getElementById("foo").innerHTML = "Hello JavaScript!";
+</script>
+
+---
+
+(source_file
+  (raw_text)
+  (raw_text)
+  (raw_text))
+
+===
+CSS
+===
+
+<style>
+  body {background-color: powderblue;}
+  h1   {color: blue;}
+  p    {color: red;}
+</style>
+
+---
+
+(source_file
+  (raw_text)
+  (raw_text)
+  (raw_text)
+  (raw_text)
+  (raw_text))

@@ -54,11 +54,7 @@ module.exports = grammar({
     body: $ => seq(
       '{',
       optional($.definitions),
-      choice(
-        '}',
-        seq('}', $.else_if),
-        seq('}', $.else)
-      )
+      '}'
     ),
 
     definitions: $ => repeat1($._definition),

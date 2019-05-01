@@ -13,8 +13,9 @@
 
   #if(1 + 2 == 3) { Magnifique! }
 
-  #/* Some rather stupid
-  multiline comments */
+  #/* Some
+  multiline
+  comments */
   #if(someString == "YOLO!") {
     <b>#(someString)</b>
   } else if (true) {
