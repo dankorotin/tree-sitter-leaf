@@ -22,7 +22,7 @@ module.exports = grammar({
     ),
 
     tag: $ => seq(
-      choice('#', '##'),
+      '#',
       optional($.name),
       $.parameter_list,
       optional($.body)
