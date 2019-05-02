@@ -17,7 +17,7 @@ module.exports = grammar({
     raw_text: $ => /[^#\n\t\s][^#\n]*/,
 
     comment: $ => choice(
-      seq('#//', $.raw_text),
+      seq('#//', /[\n]*/),
       seq('#/*', /[\w\'\s\r\n\*]*\*\//)
     ),
 
