@@ -83,7 +83,7 @@
             },
             {
               "type": "PATTERN",
-              "value": "[\\w\\'\\s\\r\\n\\*]*"
+              "value": "[\\w\\s*]*"
             }
           ]
         },
@@ -112,7 +112,7 @@
     },
     "string": {
       "type": "PATTERN",
-      "value": "[^\\\"]*"
+      "value": "[^\\n\\\"]*"
     },
     "string_parameter": {
       "type": "SEQ",
@@ -201,7 +201,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "definitions"
+              "name": "_definitions"
             },
             {
               "type": "BLANK"
@@ -214,7 +214,7 @@
         }
       ]
     },
-    "definitions": {
+    "_definitions": {
       "type": "REPEAT1",
       "content": {
         "type": "SYMBOL",

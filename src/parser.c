@@ -39,7 +39,7 @@ enum {
   sym_parameter_list = 23,
   sym_parameters = 24,
   sym_body = 25,
-  sym_definitions = 26,
+  sym__definitions = 26,
   aux_sym_source_file_repeat1 = 27,
   aux_sym_parameters_repeat1 = 28,
 };
@@ -71,7 +71,7 @@ static const char *ts_symbol_names[] = {
   [sym_parameter_list] = "parameter_list",
   [sym_parameters] = "parameters",
   [sym_body] = "body",
-  [sym_definitions] = "definitions",
+  [sym__definitions] = "_definitions",
   [aux_sym_source_file_repeat1] = "source_file_repeat1",
   [aux_sym_parameters_repeat1] = "parameters_repeat1",
 };
@@ -181,8 +181,8 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = true,
     .named = true,
   },
-  [sym_definitions] = {
-    .visible = true,
+  [sym__definitions] = {
+    .visible = false,
     .named = true,
   },
   [aux_sym_source_file_repeat1] = {
@@ -339,7 +339,6 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead == '\n' ||
           lookahead == '\r' ||
           lookahead == ' ' ||
-          lookahead == '\'' ||
           lookahead == '*' ||
           ('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'Z') ||
@@ -595,12 +594,14 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       if (lookahead == '#')
         ADVANCE(32);
       if (lookahead != 0 &&
+          lookahead != '\n' &&
           lookahead != '"')
         ADVANCE(31);
       END_STATE();
     case 32:
       ACCEPT_TOKEN(sym_string);
       if (lookahead != 0 &&
+          lookahead != '\n' &&
           lookahead != '"')
         ADVANCE(32);
       END_STATE();
@@ -818,7 +819,7 @@ static uint16_t ts_parse_table[STATE_COUNT][SYMBOL_COUNT] = {
     [sym__definition] = STATE(29),
     [sym_tag] = STATE(29),
     [aux_sym_source_file_repeat1] = STATE(29),
-    [sym_definitions] = STATE(30),
+    [sym__definitions] = STATE(30),
     [anon_sym_POUND_SLASH_STAR] = ACTIONS(77),
     [sym_tag_symbol] = ACTIONS(79),
     [anon_sym_POUND_LPAREN] = ACTIONS(81),
@@ -972,7 +973,7 @@ static uint16_t ts_parse_table[STATE_COUNT][SYMBOL_COUNT] = {
     [sym__definition] = STATE(29),
     [sym_tag] = STATE(29),
     [aux_sym_source_file_repeat1] = STATE(29),
-    [sym_definitions] = STATE(46),
+    [sym__definitions] = STATE(46),
     [anon_sym_POUND_SLASH_STAR] = ACTIONS(77),
     [sym_tag_symbol] = ACTIONS(79),
     [anon_sym_POUND_LPAREN] = ACTIONS(81),
@@ -1070,7 +1071,7 @@ static TSParseActionEntry ts_parse_actions[] = {
   [112] = {.count = 1, .reusable = true}, SHIFT(34),
   [114] = {.count = 1, .reusable = true}, REDUCE(sym_body, 2),
   [116] = {.count = 1, .reusable = false}, REDUCE(sym_body, 2),
-  [118] = {.count = 1, .reusable = true}, REDUCE(sym_definitions, 1),
+  [118] = {.count = 1, .reusable = true}, REDUCE(sym__definitions, 1),
   [120] = {.count = 1, .reusable = true}, SHIFT(36),
   [122] = {.count = 1, .reusable = true}, REDUCE(sym_string_parameter, 3),
   [124] = {.count = 1, .reusable = false}, REDUCE(sym_string_parameter, 3),

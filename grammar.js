@@ -24,7 +24,7 @@ module.exports = grammar({
     ),
 
     comment: $ => choice(
-      seq('#//', /[\w\'\s\r\n\*]*/),
+      seq('#//', /[\w\s*]*/),
       seq('#/*', /[\w\'\s\r\n\*]*\*\//)
     ),
 
@@ -32,7 +32,7 @@ module.exports = grammar({
 
     identifier: $ => /[\w]+/,
 
-    string: $ => /[^\"]*/,
+    string: $ => /[^\n\"]*/,
 
     string_parameter: $ => seq('"', $.string, '"'),
 
@@ -57,11 +57,11 @@ module.exports = grammar({
 
     body: $ => seq(
       '{',
-      optional($.definitions),
+      optional($._definitions),
       '}'
     ),
 
-    definitions: $ => repeat1($._definition)
+    _definitions: $ => repeat1($._definition)
   },
 
   extras: $ => [/[^#]*/]
