@@ -10,9 +10,10 @@ module.exports = grammar({
       $.comment
     ),
 
-    tag: $ => seq(
-      $.tag_symbol,
-      $.identifier,
+    tag: $ => seq($.tag_symbol, $.tag_components),
+
+    tag_components: $ => seq(
+      alias($.identifier, "name"),
       $.parameter_list,
       optional($.body)
     ),
@@ -30,35 +31,45 @@ module.exports = grammar({
 
     tag_symbol: $ => /[#]+/,
 
-    identifier: $ => /[\w]+/,
+    identifier: $ => /\w+/,
 
-    string: $ => /[^\n\"]*/,
+    string: $ => /[^\n\"]+/,
 
     string_parameter: $ => seq('"', $.string, '"'),
 
+    operator: $ => choice(
+      'in',
+      /[\+|\-|\*|\/|=|>|<|\&|\||%|\!]+/,
+      '.'
+    ),
+
     parameter_list: $ => seq(
       '(',
-      optional($.parameters),
+      optional($._parameters),
       ')'
     ),
 
-    parameters: $ => repeat1(
+    _parameters: $ => repeat1(
       choice(
         $.string_parameter,
-        $.identifier,
-        choice(
-          // TODO: Make 'in' and '.' variables for additional styling options?
-          'in',
-          /[\+|-|\*|/|=|>|<|&|\||%|!]+/,
-          '.'
-        ),
+        $.operator
       )
     ),
 
+    else: $ => /[\s]*else[\s]*/,
+
     body: $ => seq(
-      '{',
+      /[\s]*\{[\s]*/,
       optional($._definitions),
-      '}'
+      /[\s]*\}[\s]*/,
+      optional(
+        seq(
+          $.else,
+          $.body,
+          $.tag_components
+        )
+      ),
+      // optional(seq($.else, $.tag_components, $.body))
     ),
 
     _definitions: $ => repeat1($._definition)
