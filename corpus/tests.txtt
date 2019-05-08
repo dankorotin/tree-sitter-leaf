@@ -34,7 +34,58 @@ Tag with tags and raw text
 
 ---
 
-
+(source_file
+  (tag
+    (tag_name)
+    (parameter_list
+      (string_parameter
+        (string)))
+    (body
+      (variable
+        (identifier))
+      (tag
+        (tag_name)
+        (parameter_list)
+        (body))
+      (tag
+        (tag_name)
+        (parameter_list
+          (operator))
+        (body
+          (variable
+            (identifier))))
+      (tag
+        (tag_name)
+        (parameter_list
+          (operator)
+          (operator))
+        (body))
+      (comment)
+      (tag
+        (tag_name)
+        (parameter_list
+          (operator)
+          (operator)
+          (string_parameter
+            (string)))
+        (body
+          (variable
+            (identifier)))
+        (else_if
+          (parameter_list)
+          (body
+            (tag
+              (tag_name)
+              (parameter_list))))
+        (else
+          (body
+            (comment)
+            (comment))))))
+  (tag
+    (tag_name)
+    (parameter_list
+      (string_parameter
+        (string)))))
 
 ===
 HTML with tag inside
@@ -57,8 +108,7 @@ HTML with tag inside
 (source_file
   (tag
     (tag_name)
-    (parameter_list
-      (identifier))
+    (parameter_list)
     (body
       (tag
         (tag_name)

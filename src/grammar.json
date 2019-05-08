@@ -71,6 +71,18 @@
           "members": [
             {
               "type": "SYMBOL",
+              "name": "else_if"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
               "name": "else"
             },
             {
@@ -214,6 +226,23 @@
           }
         ]
       }
+    },
+    "else_if": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "else if"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "parameter_list"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "body"
+        }
+      ]
     },
     "else": {
       "type": "SEQ",

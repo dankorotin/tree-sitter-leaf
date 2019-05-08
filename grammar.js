@@ -16,6 +16,7 @@ module.exports = grammar({
       alias($.identifier, "tag_name"),
       $.parameter_list,
       optional($.body),
+      optional($.else_if),
       optional($.else)
     ),
 
@@ -55,6 +56,12 @@ module.exports = grammar({
         $.string_parameter,
         $.operator
       )
+    ),
+
+    else_if: $ => seq(
+      'else if',
+      $.parameter_list,
+      $.body
     ),
 
     else: $ => seq(
