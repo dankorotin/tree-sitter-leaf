@@ -10,12 +10,13 @@ module.exports = grammar({
       $.comment
     ),
 
-    tag: $ => seq($.tag_symbol, $.tag_components),
+    tag: $ => seq($._tag_symbol, $._tag_components),
 
-    tag_components: $ => seq(
-      alias($.identifier, "name"),
+    _tag_components: $ => seq(
+      alias($.identifier, "tag_name"),
       $.parameter_list,
-      optional($.body)
+      optional($.body),
+      optional($.else)
     ),
 
     variable: $ => seq(
@@ -29,7 +30,7 @@ module.exports = grammar({
       seq('#/*', /[\w\'\s\r\n\*]*\*\//)
     ),
 
-    tag_symbol: $ => /[#]+/,
+    _tag_symbol: $ => /[#]+/,
 
     identifier: $ => /\w+/,
 
@@ -56,20 +57,15 @@ module.exports = grammar({
       )
     ),
 
-    else: $ => /[\s]*else[\s]*/,
+    else: $ => seq(
+      'else',
+      $.body
+    ),
 
     body: $ => seq(
-      /[\s]*\{[\s]*/,
+      '{',
       optional($._definitions),
-      /[\s]*\}[\s]*/,
-      optional(
-        seq(
-          $.else,
-          $.body,
-          $.tag_components
-        )
-      ),
-      // optional(seq($.else, $.tag_components, $.body))
+      '}'
     ),
 
     _definitions: $ => repeat1($._definition)

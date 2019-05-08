@@ -30,15 +30,15 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "tag_symbol"
+          "name": "_tag_symbol"
         },
         {
           "type": "SYMBOL",
-          "name": "tag_components"
+          "name": "_tag_components"
         }
       ]
     },
-    "tag_components": {
+    "_tag_components": {
       "type": "SEQ",
       "members": [
         {
@@ -48,7 +48,7 @@
             "name": "identifier"
           },
           "named": false,
-          "value": "name"
+          "value": "tag_name"
         },
         {
           "type": "SYMBOL",
@@ -60,6 +60,18 @@
             {
               "type": "SYMBOL",
               "name": "body"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "else"
             },
             {
               "type": "BLANK"
@@ -116,7 +128,7 @@
         }
       ]
     },
-    "tag_symbol": {
+    "_tag_symbol": {
       "type": "PATTERN",
       "value": "[#]+"
     },
@@ -204,15 +216,24 @@
       }
     },
     "else": {
-      "type": "PATTERN",
-      "value": "[\\s]*else[\\s]*"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "else"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "body"
+        }
+      ]
     },
     "body": {
       "type": "SEQ",
       "members": [
         {
-          "type": "PATTERN",
-          "value": "[\\s]*\\{[\\s]*"
+          "type": "STRING",
+          "value": "{"
         },
         {
           "type": "CHOICE",
@@ -227,33 +248,8 @@
           ]
         },
         {
-          "type": "PATTERN",
-          "value": "[\\s]*\\}[\\s]*"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "else"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "body"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "tag_components"
-                }
-              ]
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
+          "type": "STRING",
+          "value": "}"
         }
       ]
     },

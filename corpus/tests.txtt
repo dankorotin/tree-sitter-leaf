@@ -56,14 +56,12 @@ HTML with tag inside
 
 (source_file
   (tag
-    (tag_symbol)
-    (name)
+    (tag_name)
     (parameter_list
       (identifier))
     (body
       (tag
-        (tag_symbol)
-        (name)
+        (tag_name)
         (parameter_list)))))
 
 ===
