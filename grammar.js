@@ -6,6 +6,7 @@ module.exports = grammar({
 
     _definition: $ => choice(
       $.tag,
+      $.variable,
       $.comment
     ),
 
@@ -14,6 +15,12 @@ module.exports = grammar({
       $.identifier,
       $.parameter_list,
       optional($.body)
+    ),
+
+    variable: $ => seq(
+      '#(',
+      $.identifier,
+      ')'
     ),
 
     comment: $ => choice(
