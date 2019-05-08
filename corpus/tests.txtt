@@ -33,80 +33,7 @@ Tag with tags and raw text
 
 ---
 
-(source_file
-  (tag
-    (name
-      (identifier))
-    (parameter_list
-      (string_parameter
-        (string)))
-    (body
-      (definitions
-        (raw_text)
-        (tag
-          (parameter_list
-            (identifier)))
-        (raw_text)
-        (tag
-          (name
-            (identifier))
-          (parameter_list
-            (identifier))
-          (body
-            (definitions
-              (html))))
-        (tag
-          (name
-            (identifier))
-          (parameter_list
-            (identifier)
-            (identifier))
-          (body
-            (definitions
-              (raw_text)
-              (tag
-                (parameter_list
-                  (identifier)
-                  (identifier)))
-              (raw_text))))
-        (tag
-          (name
-            (identifier))
-            (parameter_list
-              (identifier)
-              (identifier)
-              (identifier)))
-        (raw_text)
-        (comment)
-        (tag
-          (name
-            (identifier))
-          (parameter_list
-            (identifier)
-            (string_parameter
-              (string)))
-          (body
-            (definitions
-              (raw_text)
-              (tag
-                (parameter_list
-                  (identifier)))
-              (raw_text)
-              (raw_text)
-              (tag
-                (name
-                  (identifier))
-                (parameter_list
-                  (identifier)))
-              (raw_text)
-              (comment
-                (raw_text))))))))
-  (tag
-    (name
-      (identifier))
-    (parameter_list
-      (string_parameter
-        (string)))))
+
 
 ===
 HTML with tag inside
@@ -119,23 +46,14 @@ HTML with tag inside
     <div class="foo">
       Hello, world!
     </div>
+
+    #tag()
   }
 </div>
 
 ---
 
-(source_file
-  (raw_text)
-  (raw_text)
-  (tag
-    (name
-      (identifier))
-    (parameter_list
-      (identifier))
-    (body
-      (definitions
-        (html))))
-  (raw_text))
+
 
 ===
 JS
@@ -147,8 +65,7 @@ JS
 
 ---
 
-(source_file
-  (html))
+
 
 ===
 CSS
@@ -161,10 +78,3 @@ CSS
 </style>
 
 ---
-
-(source_file
-  (raw_text)
-  (raw_text)
-  (raw_text)
-  (raw_text)
-  (raw_text))
