@@ -27,7 +27,7 @@ module.exports = grammar({
     ),
 
     comment: $ => choice(
-      seq('#//', /[\w\s*]*/),
+      seq('#//', /[^\n]*/),
       seq('#/*', /[\w\'\s\r\n\*]*\*\//)
     ),
 
